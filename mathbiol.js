@@ -435,13 +435,19 @@ mathbiol.getStayLength = function (testData) {
     machineLearningInput.activate(testData);
 
     var result = machineLearningOutput.activate();
+    var output = ''
+    output = output + "Hours neuron: " + result[0] * 100 + "%";
+    output = output + "Days neuron: " + result[1] * 100 + "%";
+    output = output + "Weeks neuron: " + result[2] * 100 + "%";
 
-    console.log("Hours neuron: " + result[0] * 100 + "%");
-    console.log("Days neuron: " + result[1] * 100 + "%");
-    console.log("Weeks neuron: " + result[2] * 100 + "%");
-
+    // todo: how to show output?
+    // v1 - console
+    console.log(output);
+    // v2 - mathbiol msg
+    mathbiol.msg(output);
+    // v3 - return value
+    return output;
     // todo: normalize (split to make 100% sum)
-
 }
 
 mathbiol.load.about='load &lt;module&gt; to load a module specified in load.json'
