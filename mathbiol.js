@@ -378,6 +378,9 @@ mathbiol.load=function(md){
     console.log('loading')
 }
 
+var machineLearningInput;
+var machineLearningOutput;
+
 mathbiol.getExampleData = function() {
 
     var young = 0; 
@@ -421,18 +424,14 @@ mathbiol.learnStayLength = function(trainingData) {
         }
     }
 
-    var machineLearningInput = new synaptic.Layer(inputCount);
-    var machineLearningOutput = new synaptic.Layer(outputCount);
+    machineLearningInput = new synaptic.Layer(inputCount);
+    machineLearningOutput = new synaptic.Layer(outputCount);
     machineLearningInput.project(machineLearningOutput); // map machineLearningInputs to machineLearningOutput
     retrain(trainingData); // train
-    return [machineLearningInput, machineLearningOutput];
 }
 
 // second - get machineLearningOutput from trained model
-mathbiol.getStayLength = function (network, testData) {
-    var machineLearningInput = network[0];
-    var machineLearningOutput = network[1];
-
+mathbiol.getStayLength = function (testData) {
     machineLearningInput.activate(testData);
 
     var result = machineLearningOutput.activate();
