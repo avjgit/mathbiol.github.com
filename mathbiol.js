@@ -82,7 +82,7 @@ mathbiol.sys.log={}
 mathbiol.msg=function(h,clr,clrb){
     clrb = clrb||'black' // background color
     clr=clr||'greenyellow'
-    var y = y
+    var y = h
     if(typeof(h)=='object'||typeof(h)=='function'){
         h='<pre id="cmdMsgPre">'+mathbiol.stringify(h,null,3)+'</pre>'
     }else{
@@ -435,7 +435,7 @@ mathbiol.getStayLength = function (testData) {
     machineLearningInput.activate(testData);
 
     var result = machineLearningOutput.activate();
-    var output = ''
+    var output = "";
     output = output + "Hours neuron: " + result[0] * 100 + "%";
     output = output + "Days neuron: " + result[1] * 100 + "%";
     output = output + "Weeks neuron: " + result[2] * 100 + "%";
@@ -445,6 +445,7 @@ mathbiol.getStayLength = function (testData) {
     console.log(output);
     // v2 - mathbiol msg
     mathbiol.msg(output);
+    msg(output);
     // v3 - return value
     return output;
     // todo: normalize (split to make 100% sum)
